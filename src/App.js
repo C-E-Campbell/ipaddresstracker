@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <div>
-        <h1>IP ADDRESS TRACKER</h1>
+        <h1>IP ADDRESS FINDER</h1>
         <SearchBar getIpInfo={updateIpInfo} />
         {ipInfo ? <DisplayInfo info={ipInfo} /> : null}
       </div>

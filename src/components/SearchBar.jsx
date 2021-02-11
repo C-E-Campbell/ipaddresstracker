@@ -35,7 +35,6 @@ export default function SearchBar(props) {
       axios
         .get(url)
         .then((res) => {
-          console.log(res.data);
           props.getIpInfo(res.data);
         })
         .catch((err) => props.getIpInfo(err));

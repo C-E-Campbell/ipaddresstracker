@@ -1,7 +1,15 @@
 import SearchBar from './components/SearchBar.jsx';
 import DisplayInfo from './components/DisplayInfo.jsx';
-import { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useState, useRef, useEffect } from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvent,
+} from 'react-leaflet';
+
 function App() {
   const [ipInfo, SetIpInfo] = useState('');
 
@@ -28,7 +36,7 @@ function App() {
         {ipInfo ? <DisplayInfo info={ipInfo} /> : null}
       </div>
       <div>
-        {ipInfo ? (
+        {ipInfo.lat ? (
           <MapContainer
             style={{ height: '500px' }}
             center={[ipInfo.lat, ipInfo.lng]}

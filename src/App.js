@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-
+import SearchBar from './components/SearchBar.jsx';
+import DisplayInfo from './components/DisplayInfo.jsx';
+import { useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 function App() {
+  const [ipInfo, SetIpInfo] = useState('');
+
+  const updateIpInfo = (data) => {
+    const ip = {
+      ip: data.ip,
+      timezone: data.location.timezone,
+      city: data.location.city,
+      region: data.location.region,
+      country: data.location.country,
+      postalCode: data.location.postalCode,
+      lat: data.location.lat,
+      lng: data.location.lng,
+      isp: data.isp,
+    };
+    SetIpInfo(ip);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <h1>IP ADDRESS TRACKER</h1>
+        <SearchBar getIpInfo={updateIpInfo} />
+        <DisplayInfo info={ipInfo} />
+      </div>
+      <div>
+        {ipInfo ? (
+          <MapContainer
+            style={{ height: '500px' }}
+            center={[ipInfo.lat, ipInfo.lng]}
+            zoom={10}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[ipInfo.lat, ipInfo.lng]}>
+              <Popup>Secret Spy Location!</Popup>
+            </Marker>
+          </MapContainer>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -25,7 +25,7 @@ function App() {
       <div>
         <h1>IP ADDRESS TRACKER</h1>
         <SearchBar getIpInfo={updateIpInfo} />
-        <DisplayInfo info={ipInfo} />
+        {ipInfo ? <DisplayInfo info={ipInfo} /> : null}
       </div>
       <div>
         {ipInfo ? (

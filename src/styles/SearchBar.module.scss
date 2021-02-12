@@ -10,9 +10,13 @@ input {
   padding: 8px 16px;
   width: 300px;
   background-color: rgb(245, 245, 245);
-
+  font-size: 12px;
   &:focus {
     background-color: #fff;
+
+    form {
+      box-shadow: 20px 2px #000;
+    }
   }
 }
 
@@ -23,9 +27,10 @@ button {
   outline: none;
   background-color: #000;
   color: #fff;
+  font-size: 12px;
 
   &:hover {
-    background-color: rgb(41, 41, 41);
+    background-color: rgb(34, 34, 34);
     cursor: pointer;
   }
 }

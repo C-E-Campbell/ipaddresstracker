@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from '../styles/SearchBar.module.scss';
 export default function SearchBar(props) {
   const [ip, setIp] = useState('');
   const [initialIp, setInitialIp] = useState('');

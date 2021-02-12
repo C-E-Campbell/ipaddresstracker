@@ -1,4 +1,5 @@
 import SearchBar from './components/SearchBar.jsx';
+import styles from './App.module.scss';
 import DisplayInfo from './components/DisplayInfo.jsx';
 import { useState, useRef, useEffect } from 'react';
 import {
@@ -29,8 +30,8 @@ function App() {
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.header}>
+      <div className={styles.header_textBox}>
         <h1>IP ADDRESS FINDER</h1>
         <SearchBar getIpInfo={updateIpInfo} />
         {ipInfo ? <DisplayInfo info={ipInfo} /> : null}

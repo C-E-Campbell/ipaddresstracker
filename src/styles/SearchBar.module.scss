@@ -1,0 +1,31 @@
+form {
+  display: flex;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 8px 16px;
+  width: 300px;
+  background-color: rgb(245, 245, 245);
+
+  &:focus {
+    background-color: #fff;
+  }
+}
+
+button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+
+  &:hover {
+    background-color: rgb(41, 41, 41);
+    cursor: pointer;
+  }
+}

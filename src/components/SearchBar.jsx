@@ -11,7 +11,9 @@ export default function SearchBar(props) {
 
   useEffect(() => {
     axios
-      .get('https://api.ipify.org/?format=json')
+      .get(
+        'https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj'
+      )
       .then((res) => setInitialIp(res.data.ip))
       .then(() => {
         searchAddress();
@@ -31,8 +33,10 @@ export default function SearchBar(props) {
           props.getIpInfo(res.data);
         })
         .catch((err) => props.getIpInfo(err));
+    }
+    if (ip.search(/[a-zA-Z]/)) {
     } else {
-      let url = `https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj&ipAddress=${ip}`;
+      let url = `https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj&domain=${ip}`;
       axios
         .get(url)
         .then((res) => {

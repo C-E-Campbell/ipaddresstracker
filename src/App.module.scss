@@ -1,7 +1,7 @@
 .header {
   background-image: url('./assets/pattern-bg.png');
-  background-size: contain;
-  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .header_textBox {
   display: flex;

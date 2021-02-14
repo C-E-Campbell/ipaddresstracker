@@ -2,6 +2,8 @@
   position: absolute;
   top: 70%;
   z-index: 555;
+  width: 70%;
+  height: 200px;
 }
 
 .infoContainer {
@@ -11,12 +13,32 @@
   height: 150px;
   width: 100%;
   align-items: center;
+  justify-content: space-between;
+
+  div {
+    border-right: 1px solid rgb(211, 211, 211);
+  }
+
+  div:last-of-type {
+    border-right: none;
+  }
 }
 
 .innerContainer {
   display: flex;
   flex-direction: column;
-  height: 80%;
-  align-items: center;
+  height: 50%;
+  padding: 20px;
+  align-items: flex-start;
   justify-content: center;
+  color: #000;
+  font-weight: 700;
+  width: 25%;
+
+  h4 {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(100, 100, 100);
+    padding: 0;
+  }
 }

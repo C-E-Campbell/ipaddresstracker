@@ -1,0 +1,22 @@
+.displayInfoBox {
+  position: absolute;
+  top: 70%;
+  z-index: 555;
+}
+
+.infoContainer {
+  background-color: #fff;
+  display: flex;
+  border-radius: 8px;
+  height: 150px;
+  width: 100%;
+  align-items: center;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+}

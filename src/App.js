@@ -34,26 +34,24 @@ function App() {
       <div className={styles.header_textBox}>
         <h1>IP ADDRESS FINDER</h1>
         <SearchBar getIpInfo={updateIpInfo} />
-        {ipInfo ? <DisplayInfo info={ipInfo} /> : null}
+        <DisplayInfo info={ipInfo} />
       </div>
-      <div>
-        {ipInfo.lat ? (
-          <MapContainer
-            style={{ height: '500px' }}
-            center={[ipInfo.lat, ipInfo.lng]}
-            zoom={10}
-            scrollWheelZoom={false}
-          >
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[ipInfo.lat, ipInfo.lng]}>
-              <Popup>Secret Spy Location!</Popup>
-            </Marker>
-          </MapContainer>
-        ) : null}
-      </div>
+      {ipInfo.lat ? (
+        <MapContainer
+          style={{ height: '500px' }}
+          center={[ipInfo.lat, ipInfo.lng]}
+          zoom={10}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[ipInfo.lat, ipInfo.lng]}>
+            <Popup>Secret Spy Location!</Popup>
+          </Marker>
+        </MapContainer>
+      ) : null}
     </div>
   );
 }

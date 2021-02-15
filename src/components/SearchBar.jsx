@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from '../styles/SearchBar.module.scss';
 export default function SearchBar(props) {
   const [ip, setIp] = useState('');
-  const [initialIp, setInitialIp] = useState('');
+
   const updateIp = (val) => {
     setIp(val);
     return;
@@ -14,7 +14,7 @@ export default function SearchBar(props) {
       .get(
         'https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj'
       )
-      .then((res) => setInitialIp(res.data.ip))
+      .then((res) => setIp(res.data.ip))
       .then(() => {
         searchAddress();
       });
@@ -24,22 +24,21 @@ export default function SearchBar(props) {
     if (e) {
       e.preventDefault();
     }
-    if (!ip) {
-      let url = `https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj&ipAddress=${initialIp}`;
-      axios
-        .get(url)
-        .then((res) => {
-          console.log(res.data);
-          props.getIpInfo(res.data);
-        })
-        .catch((err) => props.getIpInfo(err));
-    }
-    if (ip.search(/[a-zA-Z]/)) {
-    } else {
+
+    if (ip.includes('com')) {
       let url = `https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj&domain=${ip}`;
       axios
         .get(url)
         .then((res) => {
+          props.getIpInfo(res.data);
+        })
+        .catch((err) => props.getIpInfo(err));
+    } else {
+      let url = `https://geo.ipify.org/api/v1?apiKey=at_LGA5u5pZGHRVw3BP7jegnvYmRK7gj&ipAddress=${ip}`;
+      axios
+        .get(url)
+        .then((res) => {
+          console.log(res.data);
           props.getIpInfo(res.data);
         })
         .catch((err) => props.getIpInfo(err));

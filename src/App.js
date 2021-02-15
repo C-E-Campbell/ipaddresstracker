@@ -10,6 +10,7 @@ import {
   useMap,
   useMapEvent,
 } from 'react-leaflet';
+import LocationMarker from './components/LocationMarker.jsx';
 
 function App() {
   const [ipInfo, SetIpInfo] = useState('');
@@ -47,9 +48,8 @@ function App() {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[ipInfo.lat, ipInfo.lng]}>
-            <Popup>Secret Spy Location!</Popup>
-          </Marker>
+
+          <LocationMarker newLocation={ipInfo} />
         </MapContainer>
       ) : null}
     </div>

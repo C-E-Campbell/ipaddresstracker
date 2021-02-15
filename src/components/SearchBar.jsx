@@ -21,6 +21,7 @@ export default function SearchBar(props) {
   }, []);
 
   const searchAddress = (e) => {
+    props.isSearching();
     if (e) {
       e.preventDefault();
     }

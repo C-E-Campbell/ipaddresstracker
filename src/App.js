@@ -14,7 +14,7 @@ import LocationMarker from './components/LocationMarker.jsx';
 
 function App() {
   const [ipInfo, SetIpInfo] = useState('');
-
+  const [searching, SetSearching] = useState(true);
   const updateIpInfo = (data) => {
     const ip = {
       ip: data.ip,
@@ -28,14 +28,21 @@ function App() {
       isp: data.isp,
     };
     SetIpInfo(ip);
+    SetSearching(false);
   };
-
+  const isSearching = () => {
+    SetSearching(!searching);
+  };
   return (
     <div className={styles.header}>
       <div className={styles.header_textBox}>
         <h1>IP ADDRESS FINDER</h1>
-        <SearchBar getIpInfo={updateIpInfo} />
-        <DisplayInfo info={ipInfo} />
+        <SearchBar
+          searching={searching}
+          isSearching={isSearching}
+          getIpInfo={updateIpInfo}
+        />
+        <DisplayInfo searching={searching} info={ipInfo} />
       </div>
       {ipInfo.lat ? (
         <MapContainer

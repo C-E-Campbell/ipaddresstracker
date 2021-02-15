@@ -6,22 +6,24 @@ export default function DisplayInfo(props) {
       <div className={styles.infoContainer}>
         <div className={styles.innerContainer}>
           <h4>IP ADDRESS</h4>
-          {props.info ? `${props.info.ip}` : 'Searching...'}
+          {props.searching ? `Searching for IP` : `${props.info.ip}`}
         </div>
         <div className={styles.innerContainer}>
           <h4>LOCATION</h4>
 
-          {props.info
+          {!props.searching
             ? `${props.info.city}, ${props.info.region} ${props.info.postalCode}`
-            : 'Searching...'}
+            : 'Finding Location'}
         </div>
         <div className={styles.innerContainer}>
           <h4>TIMEZONE</h4>
-          {props.info ? `UTC ${props.info.timezone}` : 'Searching...'}
+          {!props.searching
+            ? `UTC ${props.info.timezone}`
+            : 'The timezone is...'}
         </div>
         <div className={styles.innerContainer}>
           <h4>ISP</h4>
-          {props.info ? `${props.info.isp}` : 'Searching...'}
+          {!props.searching ? `${props.info.isp}` : 'Looking up the ISP'}
         </div>
       </div>
     </div>

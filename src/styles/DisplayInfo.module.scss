@@ -47,6 +47,10 @@
   .infoContainer {
     flex-direction: column;
     height: 200px;
+
+    div {
+      border: none;
+    }
   }
 
   .innerContainer {
